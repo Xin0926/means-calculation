@@ -19,6 +19,7 @@ Month <- c(
 
 Year <- c( rep(c(2005,2006,2007), each=8760),rep(2008,each=8784), rep(c(2009,2010,2011),each=8760), rep(2012,each=8784),rep(c(2013,2014,2015),each=8760),rep(2016,each=8784),  rep(c(2017,2018),each=8760))
 
+tower.flux <- read.csv("/Users/xin/Dropbox/Xin/CBW/tower.flux.csv", sep = "", fill = TRUE, na.strings = "NA")
 heat <- NULL
 for(i in seq(1,736128,by=6)){
   vec <- colMeans(tower.flux[c(i:(i+5)),], na.rm=TRUE)
