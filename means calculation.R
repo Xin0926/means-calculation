@@ -20,7 +20,19 @@ Month <- c(
 Year <- c( rep(c(2005,2006,2007), each=8760),rep(2008,each=8784), rep(c(2009,2010,2011),each=8760), rep(2012,each=8784),rep(c(2013,2014,2015),each=8760),rep(2016,each=8784),  rep(c(2017,2018),each=8760))
 
 library(readr)
-tower.flux <- read_csv("https://github.com/Xin0926/means-calculation/raw/master/tower.flux.csv.zip")
+
+# Download the zip to a temporary location
+url <- "https://github.com/Xin0926/means-calculation/raw/master/tower.flux.csv.zip"
+zip_filename <- tempfile(pattern = "tower_flux", fileext = ".zip")
+curl::curl_download(url, destfile = zip_filename)
+testit::assert(file.exists(zip_filename))
+
+# Unzip the zip
+csv_filename <- utils::unzip(zipfile = zip_filename)
+testit::assert(file.exists(csv_filename))
+
+# Read the file
+tower.flux <- read_csv(csv_filename)
 
 heat <- NULL
 for(i in seq(1,736128,by=6)){
