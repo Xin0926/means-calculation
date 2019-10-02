@@ -54,6 +54,10 @@ mean_tower_flux_per_hour <- tower.flux %>%
 # Here ya go!
 mean_tower_flux_per_hour
 
+# Use old-skool naming
+heat <- mean_tower_flux_per_hour
+
+
 # Oldskool
 if (1 == 2) {
   n_rows <- nrow(tower.flux)
@@ -71,4 +75,5 @@ if (1 == 2) {
 
 }
 
-heat
+
+
